@@ -1,0 +1,17 @@
+ <table class="table table-hover table-condensed"> <thead>
+      <tr>
+      	
+        <th>User Id</th>
+        <th>Name</th>
+        <th>Count</th>
+      </tr>
+        </thead>
+        <tbody> 
+  
+<% @test12.each do | user_id, count | %>
+<tr>
+<td><%= user_id %></td>
+<td><%= User.find(user_id).name || OfflineUser.find(user_id).name  %></td>
+<td><%= count %></td>
+</tr><%end%></tbody>
+</table>

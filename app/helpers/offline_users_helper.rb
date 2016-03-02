@@ -1,0 +1,2 @@
+module OfflineUsersHelper
+end

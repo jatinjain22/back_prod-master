@@ -1,0 +1,31 @@
+  <% provide(:title, 'Edit Request') %>
+<h3>Edit Requests</h3>
+ <div class="row">
+ <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@service_request) do |f| %>
+     
+      <%= f.label :address %> 
+      <%= f.text_field :address, class: 'form-control' %>
+       </br> </br>
+      <%= f.label :request_time %>
+     <%= f.text_field :request_time, class: 'form-control' %>
+      </br> </br>
+      <%= f.label :status %>
+      <%= f.select :status, ['Pending', 'Confirmed','Completed','Cancelled'] %>
+          </br> </br>
+      <%= f.label :promised_time %>
+     <%= f.text_field :promised_time, class: 'form-control' %>
+   </br></br>
+      <%= f.label :references %>
+      <%= f.text_field :references , class: 'form-control' %>
+       </br> </br>
+      <%= f.label :service_provider %>
+      <%= f.text_field :service_provider, class: 'form-control' %>
+           </br> </br>
+      <%= f.label :user_id %>
+      <%= f.text_field :user_id, class: 'form-control' %>
+         </br> </br>
+      <%= f.submit "Create account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

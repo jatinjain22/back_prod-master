@@ -1,0 +1,114 @@
+<head><meta http-equiv="refresh" content="180"></head>
+
+<ul class="nav nav-pills">
+  <li class="active pending"><a data-toggle="pill" href="#home1">Pending Requests</a></li>
+  <li class="confirmed"><a data-toggle="pill" href="#menu12">Processed Requests</a></li>
+</ul>
+
+
+  <div class="tab-content">
+ <div id="home1" class="tab-pane fade in active"> 
+        <table class="table table-hover"> <thead>
+      <tr>
+        <th>Address</th>
+        <th>Requested Time</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>User Contact No</th>
+        <th>User Name</th>
+        <th>Change Status</th>
+      </tr>
+        </thead>
+<% @service_requests.each do |post| %>
+
+
+<% if post.status == "Pending"%><tbody>    
+       <tr>
+        <td><%=post.address%></td>        
+
+<% if !((post.request_time).to_time.nil?) %>
+        <td><%= ((post.request_time).to_time).strftime("%I:%M%p")   %></td>   
+        <% end %>
+        <td> <%= post.date  %> </td>     
+        <td><%=post.status%></td>
+<% if !(post.user.nil?)  %> 
+         <td><%= post.user.contact_no %></td>
+           <td><%=post.user.name%></td>
+     <% else %>
+         <td> 0 </td>
+         <td>Nil</td>
+     <% end %>
+  <td>
+    <%= link_to "Processed",{:controller => 'service_requests' , 
+    :action => 'swap_status', :method => :PUT, :id => post.id , :status => "Processed"  , :contact_no => post.user.contact_no } %>
+
+  <%= link_to "Cancelled",{:controller => 'service_requests' , :action => 'swap_status', 
+            :method => :PUT, :id => post.id , :status => "Cancelled" , :contact_no => post.user.contact_no }%>
+    
+  </td>
+         </tr>
+       </tbody>
+<%end%>
+<%end%>
+       </table>
+ </div>
+
+
+
+
+<div id="menu12" class="tab-pane fade">
+       <table class="table table-hover"> <thead>
+      <tr>
+        <th>Address</th>
+        <th>Requested Time</th>
+         <th>Date</th>
+        <th>Status</th>
+        <th>User Contact No</th>
+        <th>User Name</th>
+        <th>Change Status</th>
+        <th>Updated At</th>
+      </tr>
+        </thead><tbody>  
+
+<% @service_processed.each do |post| %>
+
+
+<%if post.status== "Processed"%>  
+       <tr>
+        <td><%=post.address%></td>
+       
+        <td><%= ((post.request_time).to_time).strftime("%I:%M%p") %></td>
+         <td> <%= post.date  %> </td>   
+        <td><%=post.status%></td>
+<% if !(post.user.nil?)  %> 
+         <td><%= post.user.contact_no %></td>
+           <td><%=post.user.name%></td>
+     <% else %>
+         <td> 0 </td>
+         <td>Nil</td>
+     <% end %>
+     
+        <td>
+
+  <%= link_to "Completed",{:controller => 'service_requests' , 
+    :action => 'swap_status', :method => :PUT, :id => post.id , :status => "Completed" , :contact_no => post.user.contact_no} %>
+&nbsp;&nbsp;
+          <%= link_to "Cancelled",{:controller => 'service_requests' , :action => 'swap_status', 
+            :method => :PUT, :id => post.id , :status => "Cancelled" , :contact_no => post.user.contact_no }%>
+        </td>
+        <td><%= post.updated_at %></td>
+         </tr>
+
+       </tbody>
+<%end%><%end%>
+       </table>
+
+</div>
+
+
+</div>
+
+</br></br>
+<p><%= link_to "Add New", {:controller => 'service_requests' , :action => 'create'} %></p>
+
+

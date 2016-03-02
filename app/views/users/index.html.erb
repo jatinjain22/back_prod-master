@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Offline Users</h1>
+
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <th>Id </th>
+      <th>Name</th>
+      <th>Contactno</th>
+      <th>Email</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @online_users.each do |online_user| %>
+      <tr>
+        <td><%= online_user.id %></td>
+        <td><%= online_user.name %></td>
+        <td><%= online_user.contact_no %></td>
+        <td><%= online_user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

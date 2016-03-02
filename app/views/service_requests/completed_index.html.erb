@@ -1,0 +1,43 @@
+
+ <div id="home1" class="tab-pane fade in active"> 
+        <table class="table table-hover"> <thead>
+      <tr>
+        <th>Address</th>
+        <th>Requested Time</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>User Contact No</th>
+        <th>User Name</th>
+      </tr>
+        </thead>
+<% @service_requests.each do |post| %>
+ 
+       <tr>
+        <td><%=post.address%></td>        
+
+<% if !((post.request_time).to_time.nil?) %>
+        <td><%= ((post.request_time).to_time).strftime("%I:%M%p")   %></td>   
+        <% end %>
+        <td> <%= post.date  %> </td>     
+        <td><%=post.status%></td>
+<% if !(post.user.nil?)  %> 
+         <td><%= post.user.contact_no %></td>
+           <td><%=post.user.name%></td>
+     <% else %>
+         <td> 0 </td>
+         <td>Nil</td>
+     <% end %>
+  <td>
+  
+  </td>
+         </tr>
+       </tbody>
+<%end%>
+       </table>
+ </div>
+
+
+</br></br>
+<p><%= link_to "Add New", {:controller => 'service_requests' , :action => 'new'} %></p>
+
+

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @offline_user.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @offline_user.address %>
+</p>
+
+<p>
+  <strong>Contactno:</strong>
+  <%= @offline_user.contactno %>
+</p>
+
+<%= link_to 'Edit', edit_offline_user_path(@offline_user) %> |
+<%= link_to 'Back', offline_users_path %>

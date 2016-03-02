@@ -1,0 +1,49 @@
+
+   <h3> <center><b>Completed Requests Trend</b></center></h3></br></br>
+  <table class="table table-hover table-success"> <thead>
+      <tr>
+      	<th>Total Requests</th>
+        <th>Added Today</th>
+        <th>Added This Week</th>
+        <th>Added this Month</th>
+        <th>Added this Year</th>
+        
+      </tr>
+        </thead>
+        <tbody> 
+           
+      
+         <tr>
+        <td><%=@serreq.count%></td>
+         <td><%=@serreqtoday.count %></td>
+          <td><%=@serreqthisweek.count %></td>
+          <td><%=@serreqthismonth.count %></td>
+          <td><%=@serreqthisyear.count %></td> 
+        </tr>
+      
+       </tbody>
+  </table></br></br>
+<h3> <center><b>Cancelled Requests Trend</b></center></h3></br></br>
+  <table class="table table-hover "> <thead>
+      <tr>
+        <th>Total Requests</th>
+        <th>Added Today</th>
+        <th>Added This Week</th>
+        <th>Added this Month</th>
+        <th>Added this Year</th>
+        
+      </tr>
+        </thead>
+        <tbody> 
+           
+      
+         <tr>
+        <td><%=@serreqcan.count%></td>
+         <td><%=@serreqtodaycan.count %></td>
+          <td><%=@serreqthisweekcan.count %></td>
+          <td><%=@serreqthismonthcan.count %></td>
+          <td><%=@serreqthisyearcan.count %></td> 
+        </tr>
+      
+       </tbody>
+  </table>
