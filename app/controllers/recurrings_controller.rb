@@ -1,6 +1,6 @@
 class RecurringsController < ApplicationController
   #before_action :set_recurring, only: [:show, :edit, :update, :destroy]
-
+#before_action :authenticate_ops_user!
   # GET /recurrings
   # GET /recurrings.json
   def index
@@ -13,9 +13,9 @@ class RecurringsController < ApplicationController
   end
 
   # GET /recurrings/new
-  #def new
-   # @recurring = Recurring.new
-  #end
+  def new
+    @recurring = Recurring.new
+  end
 
   # GET /recurrings/1/edit
   def edit
@@ -83,6 +83,6 @@ class RecurringsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recurring_params
-      params.require(:recurring).permit(:user_id, :recurring_flag, :last_date)
+      params.require(:recurring).permit(:user_id, :recurring_flag, :lastdate)
     end
 end

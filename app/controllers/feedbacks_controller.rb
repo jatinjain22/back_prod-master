@@ -1,6 +1,6 @@
  class FeedbacksController < ApplicationController
   #before_action :set_feedback, only: [:show, :edit, :update, :destroy]
-
+before_action :authenticate_ops_user!
   # GET /feedbacks
   # GET /feedbacks.json
   def index
