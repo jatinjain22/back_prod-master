@@ -1,5 +1,5 @@
  class FeedbacksController < ApplicationController
-  before_action :authenticate_ops_user!
+  #before_action :authenticate_ops_user!
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
 
   # GET /feedbacks
