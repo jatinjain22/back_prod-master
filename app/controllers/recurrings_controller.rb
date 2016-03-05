@@ -1,6 +1,7 @@
 class RecurringsController < ApplicationController
-  #before_action :set_recurring, only: [:show, :edit, :update, :destroy]
-#before_action :authenticate_ops_user!
+  #before_action :authenticate_ops_user!
+  before_action :set_recurring, only: [:show, :edit, :update, :destroy]
+
   # GET /recurrings
   # GET /recurrings.json
   def index

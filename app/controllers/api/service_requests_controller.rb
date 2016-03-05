@@ -129,23 +129,6 @@ class Api::ServiceRequestsController < ApplicationController
   end
 
   
-  /def recurring
-    @user_info =User.where(id: params[:user_id])
-    @reccount = @user_info.recurring_count
-    if @reccount.save
-      render json: {
-                 status: 'success',
-                 data: @reccount
-             }, status: 201
-    else
-      render json: {
-                 status: 'error',
-                 errors: ["Missing `confirm_success_url` param."],
-                 message: [:unprocessable_entity],
-             }, status: 400
-    end
-  end
-/
     # Use callbacks to share common setup or constraints between actions.
     def confirm
       @service_requests = ServiceRequest.find(params[:id])
@@ -182,7 +165,7 @@ class Api::ServiceRequestsController < ApplicationController
     end
     private
     # Never trust parameters from the scary internet, only allow the white list through.
-    def service_requests_params
+    def services_requests_params
       params.require(:service_request).permit(:id, :user_id, :address, :status, :request_time,
        :promised_time,:service_provider , :daytype , :date , :preference, :party_order_flag, :groceries_flag)
     end
