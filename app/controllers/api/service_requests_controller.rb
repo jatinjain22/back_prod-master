@@ -119,7 +119,22 @@ class Api::ServiceRequestsController < ApplicationController
        render json: {
                  status: 'success',
                  data: @service_requests
-             }, status: 200
+             }, status: 201
+    else
+      render json: {
+                 status: 'error',
+                 message: [:unprocessable_entity],
+             }, status:400
+    end
+  end
+  def update_party_flag
+    @service_requests = ServiceRequest.find(params[:id])
+    @service_requests.party_order_flag = params[:party_order_flag]
+    if @service_requests.save
+       render json: {
+                 status: 'success',
+                 data: @service_requests
+             }, status: 201
     else
       render json: {
                  status: 'error',
