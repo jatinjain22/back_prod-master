@@ -39,6 +39,7 @@ get '/cancelled_index' =>'service_requests#cancelled_index'
     resources :service_providers
     resources :service_requests
     post '/service_requests/create_upcoming' => 'service_requests#create_upcoming'
+    post '/service_requests/update_party_flag' => 'service_requests#update_party_flag'
     get '/service_request/upcoming' => 'service_requests#upcoming'
     get '/service_request/all' => 'service_requests#all'
     resources :service_provider_work_histories
