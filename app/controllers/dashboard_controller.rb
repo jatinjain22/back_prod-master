@@ -7,6 +7,6 @@ class DashboardController < ApplicationController
 		@service_processed=ServiceRequest.where(status: "Processed")
 		@service_requests=ServiceRequest.where(status: "Pending")
 		@service_cancelled=ServiceRequest.where(status: "Cancelled")
-puts "him"
+
 	end
 end
