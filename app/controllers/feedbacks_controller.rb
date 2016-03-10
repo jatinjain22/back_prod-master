@@ -48,6 +48,7 @@
   # PATCH/PUT /feedbacks/1.json
   def update
     #respond_to do |format|
+    @feedback = Feedback.find(params[:id])
       if @feedback.update(feedback_params)
         render json: {
                  status: 'success',
@@ -77,9 +78,9 @@
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_feedback
-      @feedback = Feedback.find(params[:id])
-    end
+    #def set_feedback
+     # @feedback = Feedback.find(params[:id])
+    #end
     
 
     # Never trust parameters from the scary internet, only allow the white list through.
