@@ -11,6 +11,11 @@ class RecurringsController < ApplicationController
   # GET /recurrings/1
   # GET /recurrings/1.json
   def show
+    @recurrings =  Recurring.find(params[:id])
+    render json: {
+                 status: 'success',
+                 data: @recurrings
+             }, status: 201
   end
 
   # GET /recurrings/new
@@ -68,8 +73,8 @@ class RecurringsController < ApplicationController
 
     @recurring.destroy
     #respond_to do |format|
-     if @feedback.present?
-      @feedback.destroy
+     if @recurring.present?
+      @recurring.destroy
       #format.html { redirect_to feedbacks_url, notice: 'Feedback was successfully destroyed.' }
       #format.json { head :no_content }
     end

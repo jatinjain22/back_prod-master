@@ -11,6 +11,11 @@
   # GET /feedbacks/1
   # GET /feedbacks/1.json
   def show
+     @feedbacks = Feedback.find(params[:id])
+       render json: {
+                 status: 'success',
+                 data: @feedback
+             }, status: 201
   end
 
   # GET /feedbacks/new
@@ -76,12 +81,13 @@
     redirect_to root_url    
   end
 
+    
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_feedback
-      @feedback = Feedback.find(params[:id])
-    end
+     @feedback = Feedback.find(params[:id])
     
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feedback_params
