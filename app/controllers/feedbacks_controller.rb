@@ -1,6 +1,6 @@
  class FeedbacksController < ApplicationController
   #before_action :authenticate_ops_user!
-  #before_action :set_feedback, only: [:show, :edit, :update, :destroy]
+  before_action :set_feedback, only: [:show, :edit, :update, :destroy]
 
   # GET /feedbacks
   # GET /feedbacks.json
@@ -14,7 +14,7 @@
      @feedbacks = Feedback.find(params[:id])
        render json: {
                  status: 'success',
-                 data: @feedback
+                 data: @feedbacks
              }, status: 201
   end
 
