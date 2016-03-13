@@ -180,7 +180,7 @@ class Api::ServiceRequestsController < ApplicationController
     end
     private
     # Never trust parameters from the scary internet, only allow the white list through.
-    def services_requests_params
+    def service_requests_params
       params.require(:service_request).permit(:id, :user_id, :address, :status, :request_time,
        :promised_time,:service_provider , :daytype , :date , :preference, :party_order_flag, :groceries_flag)
     end
