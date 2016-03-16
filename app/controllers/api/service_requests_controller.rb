@@ -39,6 +39,17 @@ class Api::ServiceRequestsController < ApplicationController
              }, status: 200
      end
 
+ def user_last_completed
+               
+                 @userid=params[:user_id]
+         @request = ServiceRequest.where("user_id=? and (status=? or status=? ) " , @userid,"Completed" ,"Cancelled").order('service_requests.date DESC').order('service_requests.request_time DESC') limit 1
+         
+        render json: {
+                 status: 'success',
+                 requests: @request,
+             }, status: 200
+     end
+
     def show
            @service_requests = ServiceRequest.where(user_id: params[:user_id])
     render json: {
@@ -126,6 +137,9 @@ class Api::ServiceRequestsController < ApplicationController
                  message: [:unprocessable_entity],
              }, status:400
     end
+  end
+  def feedback_check
+    
   end
   def update_party
     @service_requests = ServiceRequest.find(params[:id])

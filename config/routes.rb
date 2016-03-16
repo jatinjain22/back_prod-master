@@ -40,6 +40,7 @@ get '/cancelled_index' =>'service_requests#cancelled_index'
     resources :service_requests
     post '/service_requests/create_upcoming' => 'service_requests#create_upcoming'
     post '/service_request/update_party' => 'service_requests#update_party'
+    get '/service_request/user_last_completed' => 'service_requests#user_last_completed'
     get '/service_request/upcoming' => 'service_requests#upcoming'
     get '/service_request/all' => 'service_requests#all'
     resources :service_provider_work_histories
