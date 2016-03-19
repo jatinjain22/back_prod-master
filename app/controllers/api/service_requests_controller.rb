@@ -46,7 +46,7 @@ class Api::ServiceRequestsController < ApplicationController
          
         render json: {
                  status: 'success',
-                 requests: @request.first,
+                 data: @request.first,
              }, status: 200
      end
 
