@@ -31,6 +31,7 @@ class Api::ServiceRequestsController < ApplicationController
        def all
                t= Time.now.strftime("%H:%M")
                  @userid=params[:user_id]
+
          @request = ServiceRequest.where("user_id=? and (status=? or status=? ) " , @userid,"Completed" ,"Cancelled").order('service_requests.date DESC').order('service_requests.request_time DESC')
          
         render json: {
@@ -42,7 +43,8 @@ class Api::ServiceRequestsController < ApplicationController
  def user_last_completed
                
                  @userid=params[:user_id]
-         @request = ServiceRequest.where(["status=?","Completed"]).where(["user_id=?", @userid]).order('service_requests.date DESC').order('service_requests.request_time DESC').first
+                 @status=params[:status]
+         @request = ServiceRequest.where(["status=?",@status]).where(["user_id=?", @userid]).order('service_requests.date DESC').order('service_requests.request_time DESC').first
          
         render json: {
                  status: 'success',
@@ -138,9 +140,7 @@ class Api::ServiceRequestsController < ApplicationController
              }, status:400
     end
   end
-  def feedback_check
-    
-  end
+  
   def update_party
     @service_requests = ServiceRequest.find(params[:id])
     @service_requests.party_order_flag = params[:party_order_flag]
