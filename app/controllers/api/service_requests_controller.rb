@@ -43,8 +43,8 @@ class Api::ServiceRequestsController < ApplicationController
  def user_last_completed
                
                  @userid=params[:user_id]
-                 @status=params[:status]
-         @request = ServiceRequest.where(["status=? and user_id=?",@status,@userid]).order('service_requests.date DESC').order('service_requests.request_time DESC').first
+                
+         @request = ServiceRequest.where(["status=? and user_id=?","Completed",@userid]).order('service_requests.date DESC').order('service_requests.request_time DESC').first
          
         render json: {
                  status: 'success',
