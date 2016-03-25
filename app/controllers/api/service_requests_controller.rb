@@ -56,8 +56,8 @@ class Api::ServiceRequestsController < ApplicationController
            else
 
             render json: {
-                 status: 'error',
-             }, status: 400
+                 status: 'fail',
+             }, status: 200
           end @request.status
            
          
