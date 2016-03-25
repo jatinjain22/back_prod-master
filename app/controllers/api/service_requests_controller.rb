@@ -45,20 +45,21 @@ class Api::ServiceRequestsController < ApplicationController
                  @userid=params[:user_id]
                 
          @request = ServiceRequest.where(user_id: params[:user_id]).order('service_requests.date DESC').order('service_requests.request_time DESC').first
-         case @request.status
+         @st = @request.status
+         case @st
           when 'Completed'
-
             render json: {
                  status: 'success',
                  data: @request ,
              }, status: 200
 
            else
-
-            render json: {
-                 status: 'fail',
+       render json: {
+                 status: 'success',
+                 data: @request ,
              }, status: 200
-          end @request.status
+
+          end @st
            
          
         

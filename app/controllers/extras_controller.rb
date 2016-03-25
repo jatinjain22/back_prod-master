@@ -46,7 +46,7 @@ render :text => @tandc
 	end
 
 	def ratecard
-		@rate="Enjoy the cook service at your doorstep,Pay ₹ 2/minute on weekdays and ₹ 2.5/minute on weekend"
+		@rate="2,2.5"
 		render :text => @rate
 	end
 
